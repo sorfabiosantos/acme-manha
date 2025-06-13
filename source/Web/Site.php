@@ -17,7 +17,10 @@ class Site extends Controller
 
     public function about(): void
     {
-        echo "Olha que bonito o SOBRE do Site...";
+        echo $this->view->render("about",[
+            "name" => "Fábio",
+            "age" => 49
+        ]);
     }
 
     public function contact(): void
@@ -57,6 +60,11 @@ class Site extends Controller
 
     public function register (array$data): void
     {
-        echo "Página de Cadastro";
+        echo $this->view->render("register");
+    }
+
+    public function profile (array $data): void
+    {
+        echo "Página de Perfil";
     }
 }

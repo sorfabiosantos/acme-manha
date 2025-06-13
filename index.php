@@ -19,10 +19,11 @@ $route->get("/servicos","Site:services");
 $route->get("/faqs","Site:faqs");
 $route->get("/login","Site:login");
 $route->get("/cadastro","Site:register");
+$route->get("/perfil","Site:profile");
 
 // Rotas amigáveis da área restrita
 $route->group("/app");
-
+$route->get("/", "App:home");
 $route->group(null);
 
 $route->group("/admin");
