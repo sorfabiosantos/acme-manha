@@ -90,5 +90,8 @@
     </footer>
 
     <script type="application/javascript" src="<?= url("assets/web/js/theme.js") ?>"> </script>
+    <?php if ($this->section("specific-script")): ?>
+        <?= $this->section("specific-script"); ?>
+    <?php endif; ?>
 </body>
 </html>

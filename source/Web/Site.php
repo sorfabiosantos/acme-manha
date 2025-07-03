@@ -45,7 +45,7 @@ class Site extends Controller
 
     public function faqs(): void
     {
-        echo "Frequently Asked Questions";
+        echo $this->view->render("faqs",[]);
     }
 
     public function login(): void
