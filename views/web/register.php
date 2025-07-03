@@ -1,12 +1,26 @@
 <?php
 
-$this->layout("_theme", [
-    "title" => "RoomManager - Gestão Inteligente de Salas de Reunião",
-    "description" => "Transforme a gestão das suas salas de reunião com nossa plataforma completa. Agendamento inteligente, controle de disponibilidade e relatórios detalhados para pequenas e médias empresas.",
-    "name" => "Fábio",
-    "age" => 49
-]);
+echo "Página de Cadastro<br>";
 
 ?>
 
-<h1>Oi, eu sou o cadastro</h1>
+<!--Formulário de cadastro-->
+
+<form id="formRegister">
+    <input type="hidden" name="idType" value="1">
+    <label>
+        <span>Nome:</span>
+        <input type="text" name="name" value="Fábio Santos">
+    </label>
+    <label>
+        <span>Email:</span>
+        <input type="text" name="email" value="fabiosantos@ifsul.edu.br">
+    </label>
+    <label>
+        <span>Senha:</span>
+        <input type="password" name="password" value="1234567">
+    </label>
+    <button>Cadastrar</button>
+</form>
+
+<script type="module" src="<?= url("assets/web/js/register.js"); ?>"></script>

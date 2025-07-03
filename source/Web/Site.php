@@ -50,7 +50,7 @@ class Site extends Controller
 
     public function login(): void
     {
-        echo "Login Page";
+        echo $this->view->render("login",[]);
     }
 
     public function error (array $data): void
