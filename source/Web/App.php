@@ -9,4 +9,9 @@ class App extends Controller
         parent::__construct("app");
     }
 
+    public function home(): void
+    {
+        echo $this->view->render("home");
+    }
+
 }

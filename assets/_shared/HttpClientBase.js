@@ -71,9 +71,10 @@ export default class HttpClientBase {
     }
 
     // GET
-    async get(endpoint, params = {}) {
+    async get(endpoint, params = {}, headers = {}) {
         return this.#fetchWithConfig(endpoint, {
-            method: 'GET'
+            method: 'GET',
+            headers: headers
         }, params);
     }
 
