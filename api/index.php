@@ -25,7 +25,7 @@ $route->namespace("Source\WebService");
 
 $route->group("/users");
 
-$route->post("/login", "Users:login");
+$route->get("/login", "Users:login");
 
 $route->get("/", "Users:listUsers");
 $route->get("/id/{id}", "Users:listUserById");

@@ -134,20 +134,21 @@ class Users extends Api
 
     public function login(array $data): void
     {
+        //var_dump($this->headers["email"], $this->headers["password"]);
         // Verificar se os dados de login foram fornecidos
-        if (empty($data["email"]) || empty($data["password"])) {
+        if (empty($this->headers["email"]) || empty($this->headers["password"])) {
             $this->call(400, "bad_request", "Credenciais inválidas", "error")->back();
             return;
         }
 
         $user = new User();
 
-        if(!$user->findByEmail($data["email"])){
+        if(!$user->findByEmail($this->headers["email"])){
             $this->call(401, "unauthorized", "Usuário não encontrado", "error")->back();
             return;
         }
 
-        if(!password_verify($data["password"], $user->getPassword())){
+        if(!password_verify($this->headers["password"], $user->getPassword())){
             $this->call(401, "unauthorized", "Senha inválida", "error")->back();
             return;
         }
