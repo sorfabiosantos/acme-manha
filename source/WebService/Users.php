@@ -2,6 +2,7 @@
 
 namespace Source\WebService;
 
+use SorFabioSantos\Uploader\Uploader;
 use Source\Models\User;
 use Source\Core\JWTToken;
 
@@ -45,6 +46,56 @@ class Users extends Api
 
         $this->call(201, "created", "Usuário criado com sucesso", "success")
             ->back($response);
+
+    }
+
+    public function updatePhoto (): void
+    {
+        $this->auth();
+
+        $photo = (!empty($_FILES["photo"]["name"]) ? $_FILES["photo"] : null);
+
+        $upload = new Uploader();
+        $path = $upload->Image($photo);
+        if(!$path) {
+            $this->call(400, "bad_request", $upload->getMessage(), "error")->back();
+            return;
+        }
+
+        $user = new User();
+        $user->findByEmail($this->userAuth->email);
+        $user->setPhoto($path);
+        if(!$user->updateById()){
+            $this->call(500, "internal_server_error", $user->getErrorMessage(), "error")->back();
+            return;
+        }
+
+        $this->call(200, "success", "Foto atualizada com sucesso", "success")->back();
+
+    }
+
+    public function updateFile():void
+    {
+        $this->auth();
+
+        $file = (!empty($_FILES["file"]["name"]) ? $_FILES["file"] : null);
+
+        $upload = new Uploader();
+        $path = $upload->File($file);
+        if(!$path) {
+            $this->call(400, "bad_request", $upload->getMessage(), "error")->back();
+            return;
+        }
+
+        $user = new User();
+        $user->findByEmail($this->userAuth->email);
+        $user->setPhoto($path);
+        if(!$user->updateById()){
+            $this->call(500, "internal_server_error", $user->getErrorMessage(), "error")->back();
+            return;
+        }
+
+        $this->call(200, "success", "Arquivo atualizada com sucesso", "success")->back();
 
     }
 

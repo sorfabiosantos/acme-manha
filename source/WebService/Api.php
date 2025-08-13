@@ -18,7 +18,7 @@ class Api
 
     protected function call (int $code, string $status = null, string $message = null, $type = null): Api
     {
-        http_response_code($code);
+        //http_response_code($code);
         if(!empty($status)){
             $this->response = [
                 "code" => $code,
@@ -57,8 +57,6 @@ class Api
         }
 
         $this->userAuth = $decoded->data;
-
-
     }
 
 }

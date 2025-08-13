@@ -32,6 +32,8 @@ $route->get("/id/{id}", "Users:listUserById");
 $route->get("/id/", "Users:listUserById");
 $route->post("/add", "Users:createUser");
 $route->put("/update", "Users:updateUser");
+$route->post("/photo", "Users:updatePhoto");
+$route->post("/file", "Users:updateFile");;
 
 $route->group("null");
 
