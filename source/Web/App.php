@@ -14,4 +14,9 @@ class App extends Controller
         echo $this->view->render("home");
     }
 
+    public function profile (): void
+    {
+        echo $this->view->render("profile");
+    }
+
 }

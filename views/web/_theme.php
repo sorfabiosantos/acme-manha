@@ -13,7 +13,6 @@
     <?php if ($this->section("specific-style")): ?>
         <?= $this->section("specific-style"); ?>
     <?php endif; ?>
-
 </head>
 <body>
     <header>

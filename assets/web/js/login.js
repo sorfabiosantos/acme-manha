@@ -1,10 +1,15 @@
 import {
     HttpUser
-} from "../../_shared/HttpUser.js";
+} from "../../_shared/js/HttpUser.js";
 
-const HttpUserLogin = new HttpUser();
+import {
+    Toast
+} from "../../_shared/js/Toast.js";
 
-console.log("API inicializada", HttpUserLogin);
+const requestUserLogin = new HttpUser();
+const toast = new Toast();
+
+console.log("API inicializada", requestUserLogin);
 
 const formLogin = document.querySelector("#formLogin");
 
@@ -17,8 +22,15 @@ formLogin.addEventListener("submit", async (event) => {
     }
 
     try {
-        const userLogin = await HttpUserLogin.loginUser({}, headers);
-        console.log(userLogin);
+        const userLogin = await requestUserLogin.loginUser({}, headers);
+        console.log(userLogin.message, userLogin.type);
+        toast.show(userLogin.message, userLogin.type);
+        if(userLogin.type === "success") {
+            localStorage.setItem("userLogin", JSON.stringify(userLogin.data));
+            setTimeout(() => {
+                window.location.href = "./../../acme-manha/app";
+            }, 2000);
+        }
     } catch (error) {
         console.error("Erro ao fazer login:", error);
     }
