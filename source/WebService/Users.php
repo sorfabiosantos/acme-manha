@@ -64,7 +64,7 @@ class Users extends Api
 
         $user = new User();
         $user->findByEmail($this->userAuth->email);
-        if($user->getPhoto()){
+        if(file_exists(__DIR__ . "/../.." . $user->getPhoto())){
             unlink(__DIR__ . "/../.." . $user->getPhoto());
         }
 
