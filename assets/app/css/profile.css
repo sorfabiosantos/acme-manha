@@ -49,6 +49,7 @@
 }
 
 #profile form input[type="text"],
+#profile form input[type="password"],
 #profile form input[type="email"],
 #profile form input[type="file"] {
     padding: .75rem 1rem;
