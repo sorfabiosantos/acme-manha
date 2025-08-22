@@ -56,6 +56,7 @@ class Users extends Api
         $photo = (!empty($_FILES["photo"]["name"]) ? $_FILES["photo"] : null);
 
         $upload = new Uploader();
+        // /storage/images/091da97a9aec86fe9905ecf532508cd4.png
         $path = $upload->Image($photo);
         if(!$path) {
             $this->call(400, "bad_request", $upload->getMessage(), "error")->back();
@@ -64,9 +65,10 @@ class Users extends Api
 
         $user = new User();
         $user->findByEmail($this->userAuth->email);
-        if(file_exists(__DIR__ . "/../.." . $user->getPhoto())){
+        var_dump(file_exists(__DIR__ . "/../.." . $user->getPhoto()));
+        /*if(file_exists(__DIR__ . "/../.." . $user->getPhoto())){
             unlink(__DIR__ . "/../.." . $user->getPhoto());
-        }
+        }*/
 
         $user->setPhoto($path);
         if(!$user->updateById()){
