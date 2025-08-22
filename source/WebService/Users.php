@@ -65,10 +65,9 @@ class Users extends Api
 
         $user = new User();
         $user->findByEmail($this->userAuth->email);
-        var_dump(file_exists(__DIR__ . "/../.." . $user->getPhoto()));
-        /*if(file_exists(__DIR__ . "/../.." . $user->getPhoto())){
-            unlink(__DIR__ . "/../.." . $user->getPhoto());
-        }*/
+        if(file_exists(__DIR__ . "/../../storage/images/" . "{$user->getPhoto()}")){
+            unlink(__DIR__ . "/../../storage/images/" . "{$user->getPhoto()}");
+        }
 
         $user->setPhoto($path);
         if(!$user->updateById()){
