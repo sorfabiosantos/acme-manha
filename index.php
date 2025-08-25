@@ -25,6 +25,8 @@ if($user->findLink($link)){
     $route->group("/{$link}");
     $route->get("/", "Customer:home");
     $route->get("/catalogo", "Customer:catalog");
+    // Demais rotas
+    // $route->get("/carrinho-compras", "Customer:cart");
     $route->group(null);
 }
 

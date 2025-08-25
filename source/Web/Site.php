@@ -55,7 +55,7 @@ class Site extends Controller
 
     public function error (array $data): void
     {
-        echo "Error {$data["errcode"]}...";
+        echo $this->view->render("error-page");
     }
 
     public function register (array$data): void
