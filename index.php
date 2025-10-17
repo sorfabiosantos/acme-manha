@@ -40,6 +40,7 @@ $route->get("/servicos","Site:services");
 $route->get("/faqs","Site:faqs");
 $route->get("/login","Site:login");
 $route->get("/cadastro","Site:register");
+$route->get("/js-poo","Site:jsPoo");
 
 // Rotas amigáveis da área restrita
 $route->group("/app");

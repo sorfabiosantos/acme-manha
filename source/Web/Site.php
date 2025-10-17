@@ -67,4 +67,9 @@ class Site extends Controller
     {
         echo "Página de Perfil";
     }
+
+    public function jsPoo (): void
+    {
+        echo $this->view->render("js-poo");
+    }
 }
